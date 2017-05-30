@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static com.barbapapateam.barbapapa.Database.*;
@@ -78,6 +79,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+  /*  @Override
+    protected void onStop() {
+        super.onStop();
+        LinkedList<Beer> beers = Database.beers;
+        Utils.saveBeersToJSON(beers);
+    }
+*/
     private void setupViewPager(ViewPager viewPager)
     {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -179,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void LaunchCommandActivity() {
 
-        Beer beer = new Beer("Test", (float)2, null, "Trappist", "Test2", (float) 3, true, true);
+        Beer beer = new Beer("Test", (float)2, null, "Trappist", "Test2", (float) 3, true, true, "");
         Intent commandIntent = new Intent(this, CommandActivity.class);
         commandIntent.putExtra("BEER", beer);
         startActivity(commandIntent);
